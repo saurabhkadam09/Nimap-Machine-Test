@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    
+    {% block content %}
+    <h2>Welcome to Homepage!</h2>
+    <table>
+        <tr><td><a href='viewclient'>View Clients</a></td></tr>
+        <tr><td><a href='addclient'>Add Client</a></td></tr>
+        <tr><td><a href='addproject'>Add Project</a></td></tr>
+        <tr><td><a href='assignuser'>Assign User to Project</a></td></tr>
+        <tr><td><a href='myprojects'>My Projects</a></td></tr>
+        {% if 'uname' in request.session %}
+        <tr><td><a href='logout'>Log Out</a></td></tr>
+        {% else %}
+        <tr><td><a href='userlogin'>User Login</a></td></tr>
+        {% endif %}
+    </table>
+    {% endblock %}
+</body>
+</html>

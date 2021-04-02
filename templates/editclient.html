@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <span><a href='/'>Home</a></span>
+    <span><a href='logout'>Logout</a></span>
+</div>
+<h2>Edit Client Here!</h2>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr><td><input type='hidden' name='cid' value="{{client.id}}"></td></tr>
+        <tr><td>Client Name</td><td><input type='text' name='client' value="{{client.client_name}}"></td></tr>
+        <tr><td><button type="submit">Edit Client</button></td></tr>
+
+    </table>
+</form> 
+
+{% endblock %}

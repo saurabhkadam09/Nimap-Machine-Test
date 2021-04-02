@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h2>Login User Here!</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr><td>Username</td><td><input type='text' name='uname'></td></tr>
+            <tr><td>Password</td><td><input type='password' name='pwd'></td></tr>
+            <tr><td>{{message}}</td></tr>
+            <tr><td><button type="submit">Login</button></td><td><a href='admin/'>Register User</a></td></tr>
+        </table>
+    </form>
+{% endblock %}

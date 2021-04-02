@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <span><a href='/'>Home</a></span>
+    <span><a href='logout'>Logout</a></span>
+</div>
+<h2>View Client Details Here!</h2>
+<table border='1'>
+    <tr>
+        <th>Client ID</th>
+        <th>Client Name</th>
+        <th>Last Updated</th>
+        <th>Created By User</th>
+        <th>Projects & Users</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+        <td>{{client.id}}</td>
+        <td>{{client.client_name}}</td>
+        <td>{{client.created_at}}</td>
+        <td>{{client.created_by}}</td>
+        <td>
+            
+            <table>
+                {% for project in projects %}
+                {% if client.id == project.project.client.id %}
+                <tr>
+                    <td>{{project.project.project_name}}</td>
+                    <td>-</td>
+                    <td>{{project.user.username}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+
+        </td>
+        <td><a href='editclient/{{client.id}}'>Edit</a></td>
+        <td><a href='deleteclient/{{client.id}}'>Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

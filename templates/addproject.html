@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <span><a href='/'>Home</a></span>
+    <span><a href='logout'>Logout</a></span>
+</div>
+<h2>Add New Project Here!</h2>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr><td>Project Name</td><td><input type='text' name='project'></td></tr>
+        <tr>
+            <td>Client Name</td>
+            <td>
+                <select name='client'>
+                    <option selected>Select Client</option>
+                    {% for client in clients %}
+                    <option value='{{client.id}}'>{{client.client_name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr><td><button type="submit">Add Project</button></td></tr>
+    </table>
+</form>
+
+{% endblock %}

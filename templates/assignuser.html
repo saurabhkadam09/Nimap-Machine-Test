@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block content %}
+<div>
+    <span><a href='/'>Home</a></span>
+    <span><a href='logout'>Logout</a></span>
+</div>
+<h2>Assign User to the Project!</h2>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Project</td>
+            <td>
+                <select name='project'>
+                    <option selected>Select Project</option>
+                    {% for project in projects %}
+                    <option value='{{project.id}}'>{{project.project_name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>
+                <select name='user'>
+                    <option selected>Select User</option>
+                    {% for user in users %}
+                    <option value='{{user.username}}'>{{user.username}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr><td>{{message}}</td></tr>
+        <tr><td><button type="submit">Submit</button></td></tr>
+    </table>
+
+</form>
+
+{% endblock %}
